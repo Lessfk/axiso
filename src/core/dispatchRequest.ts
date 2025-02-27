@@ -30,6 +30,7 @@ function trasnformHeaders(config: AxiosReqeustConfig): any {
     return processHeaders(headers, data)
 }
 
+// 自己包装一层请求返回值
 function transformResposneData(res: AxiosResponse): any {
     res.data = trasnformResponse(res.data)
     return res

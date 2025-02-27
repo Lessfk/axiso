@@ -1,6 +1,7 @@
 
 import { isDate, isObject } from "./utils"
 
+// 转义 特殊字符不能转义的字符
 function encode(url: string) {
     return encodeURIComponent(url)
     .replace(/%40/g, '@')
@@ -44,6 +45,7 @@ export function buildURL(url: string, params?: any) {
             } else if (isObject(val)) { // 处理对象
                 val = JSON.stringify(val) // 对象转字符串
             }
+            // 转义字符然后放到数组里面
             parts.push(`${encode(key)}=${encode(val)}`)
         })
     })
