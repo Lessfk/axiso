@@ -16,21 +16,24 @@ function processConfig(config: AxiosReqeustConfig) {
     config.data = trasnformRequestData(config)
 }
 
+// 处理url
 function trasnformURL(config: AxiosReqeustConfig): string {
     const { url, params } = config
     return buildURL(url, params)
 }
 
+// 处理post请求的data
 function trasnformRequestData(config: AxiosReqeustConfig): any {
     return trasnformRequest(config.data)
 }
 
+// 处理头部
 function trasnformHeaders(config: AxiosReqeustConfig): any {
     const { headers = {}, data } = config
     return processHeaders(headers, data)
 }
 
-// 自己包装一层请求返回值
+// 处理返回值
 function transformResposneData(res: AxiosResponse): any {
     res.data = trasnformResponse(res.data)
     return res
